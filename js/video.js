@@ -18,8 +18,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	document.querySelector("#play").addEventListener("click", function() {
 		video.play();
-		video.volume = 1.0;
-		document.querySelector("#volume").textContent = 100 + "%";
+		let slider = document.querySelector("#slider");
+		let volume = document.querySelector("#volume");
+		var newVolume = slider.value / 100;
+		video.volume = newVolume;
+		volume.textContent = (newVolume * 100).toFixed(0) + "%";
 		console.log("Play Video");
 	}); 
 	
@@ -69,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	video.addEventListener("volumechange", function () {
 		var volume = (video.volume * 100).toFixed(0) + "%";
-		volume.textContent = "Volume: " + volume;
+		volume.textContent = volume;
 	});
 
 	document.querySelector("#vintage").addEventListener("click", function() {
