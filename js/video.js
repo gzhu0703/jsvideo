@@ -17,8 +17,9 @@ document.addEventListener("DOMContentLoaded", function() {
 	var video = document.querySelector(".video");
 
 	document.querySelector("#play").addEventListener("click", function() {
-		video.play()
+		video.play();
 		video.volume = 1.0;
+		document.querySelector("#volume").textContent = 100 + "%";
 		console.log("Play Video");
 	}); 
 	
@@ -29,12 +30,12 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 	document.querySelector("#slower").addEventListener("click", function() {
 		video.playbackRate -= 0.1;
-		console.log('New speed: ' + videoElement.playbackRate.toFixed(1));
+		console.log("New speed: " + videoElement.playbackRate.toFixed(1));
 	})
 	
 	document.querySelector("#faster").addEventListener("click", function() {
 		video.playbackRate += 0.1;
-		console.log('New speed: ' + videoElement.playbackRate.toFixed(1));
+		console.log("New speed: " + videoElement.playbackRate.toFixed(1));
 	})
 	
 	document.querySelector("#skip").addEventListener("click", function() {
@@ -44,17 +45,17 @@ document.addEventListener("DOMContentLoaded", function() {
 		} else {
 			video.currentTime = 0;
 		}
-		console.log('New position: ' + videoElement.currentTime.toFixed(1));
+		console.log("New position: " + videoElement.currentTime.toFixed(1));
 	})
 
 	document.querySelector("#mute").addEventListener("click", function() {
 		let muteButton = document.querySelector("#mute");
 		if (video.muted) {
 			video.muted = false;
-			muteButton.textContent = 'Mute';
+			muteButton.textContent = "Mute";
 		} else {
 			video.muted = true;
-			muteButton.textContent = 'Unmute';
+			muteButton.textContent = "Unmute";
 		}
 	})
 
@@ -63,12 +64,12 @@ document.addEventListener("DOMContentLoaded", function() {
 		let volume = document.querySelector("#volume");
 		var newVolume = slider.value / 100;
 		video.volume = newVolume;
-		volume.textContent = (newVolume * 100).toFixed(0) + '%';
+		volume.textContent = (newVolume * 100).toFixed(0) + "%";
 	});
 
 	video.addEventListener("volumechange", function () {
-		var volume = (video.volume * 100).toFixed(0) + '%';
-		volume.textContent = 'Volume: ' + volume;
+		var volume = (video.volume * 100).toFixed(0) + "%";
+		volume.textContent = "Volume: " + volume;
 	});
 
 	document.querySelector("#vintage").addEventListener("click", function() {
